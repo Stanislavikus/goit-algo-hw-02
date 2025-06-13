@@ -1,0 +1,23 @@
+from collections import deque
+
+def is_palindrome(s):
+    cleaned = ''.join(c.lower() for c in s if c.isalnum())
+    d = deque(cleaned)
+
+    while len(d) > 1:
+        if d.popleft() != d.pop():
+            return False
+    return True
+
+# Тестування
+test_strings = [
+    "A man a plan a canal Panama",
+    "Racecar",
+    "Python",
+    "Казак",
+    "Ого"
+]
+
+for s in test_strings:
+    result = is_palindrome(s)
+    print(f"🔍 '{s}' -> {'паліндром' if result else 'не паліндром'}")
